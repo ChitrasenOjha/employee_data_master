@@ -1,0 +1,49 @@
+<mvc:View controllerName="employeedatamaster.controller.MainPage"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:u="sap.ui.unified"
+    xmlns:l="sap.ui.layout"
+    displayBlock="true">
+    <Page id="page" title="ZZEXCEL_UPLOAD_FIORI" showHeader="false">
+        <content>
+            <FlexBox id="_IDGenFlexBox"
+                justifyContent="Start"
+                alignItems="Center"
+                width="100%"
+                height="100%"
+                direction="Column"
+                class="sapUiLargeMarginTop">
+                <VBox id="_IDGenVBox" alignItems="Center" class="sapUiLargeMarginTop uploadCard">
+                    <HBox id="_IDGenHBox1" alignItems="Center">
+                        <Text id="_IDGenText1" text="Upload File:" class="sapUiTinyMarginEnd" />
+                            <u:FileUploader
+                                id="fileUploader"
+                                name="myFileUpload"
+                                width="420px"
+                                change=".onFileUpload"
+                                uploadComplete=".onUploadComplete"
+                                fileType="xlsx,csv"
+                                buttonText="Browse" />
+                        </HBox>
+                        <VBox id="_IDGenVBox1" height="20px"></VBox>
+                        <HBox id="_IDGenHBox2"
+                            alignItems="Center"
+                            justifyContent="Center"
+                            class="sapUiSmallMarginTop">
+                                <Button
+                                    id="_IDGenButton"
+                                    text="Validate"
+                                    type="Emphasized"
+                                    press="onValidate"
+                                    class="sapUiTinyMarginEnd" />
+                                <Button
+                                    id="_IDGenButton1"
+                                    text="Clear"
+                                    type="Reject"
+                                    press="onClearPress" />
+                        </HBox>
+                </VBox>
+            </FlexBox>
+        </content>
+    </Page>
+</mvc:View>
