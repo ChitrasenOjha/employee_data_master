@@ -98,6 +98,19 @@ sap.ui.define([
                         range: range,
                         blankrows: true
                     });
+
+                    const headerRow = rowsAsArrays[9];
+                    const columnCount = headerRow.filter(cell => cell !== "").length;
+                    console.log(headerRow);
+                    console.log("No of Columns:", columnCount);
+
+                    if (columnCount != 109) {
+                        sap.m.MessageToast.show("Incorrect File Template ! Upload Corrrect File Template");
+                        sap.ui.core.BusyIndicator.hide();
+                        return;
+
+
+                    }
                     rowsAsArrays.forEach(row => {
                         console.log(row);
                         var data = {
@@ -253,7 +266,6 @@ sap.ui.define([
                 });
 
                 var worksheet = XLSX.utils.json_to_sheet(reorderedList);
-
                 var workbook = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(workbook, worksheet, "Validated Data");
 
