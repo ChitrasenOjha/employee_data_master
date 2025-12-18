@@ -1,12 +1,36 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
     "employeedatamaster/util/xlsx.full.min"
 ],
-    function (Controller, xlsx) {
+    function (Controller, JSONModel, xlsx) {
         "use strict";
         var TO_ITEMS = [];
+        var uploadedCount=0;
         return Controller.extend("employeedatamaster.controller.MainPage", {
             onInit: function () {
+
+
+
+                //-----------Combox logic----------
+
+                // Promise.all([
+                //     this.loadJSON("/model/countries.json"),
+                //     this.loadJSON("/model/verticals.json")
+                // ]).then(function (aData) {
+                //     this.allVerticals = aData[1];
+                //     var oModel = new sap.ui.model.json.JSONModel({
+                //         countries: aData[0],
+                //         filteredVerticals: []
+                //     });
+                //     this.getView().setModel(oModel, "local");
+
+                // }.bind(this)).catch(function (err) {
+                //     console.error("Error loading JSON:", err);
+                // });
+
+                //CSRF Token logic
+
                 this._csrfToken = null;
                 fetch("/sap/opu/odata/sap/ZR_VALIDATION_SF_SRV/", {
                     method: "GET",
@@ -18,6 +42,55 @@ sap.ui.define([
 
                 }).catch(err => console.error("CSRF fetch failed", err));
             },
+
+            //-------------JSON Loader Helper---------------
+
+            // loadJSON: function (sPath)
+            // {
+            //     return new Promise(function (resolve, reject) {
+            //         var oModel = new sap.ui.model.json.JSONModel();
+            //         oModel.attachRequestCompleted(function () {
+            //             resolve(oModel.getData());
+            //         });
+            //         oModel.attachRequestFailed(function () {
+            //             reject("Failed to load: " + sPath);
+            //         });
+            //         oModel.loadData(sPath);
+            //     });
+            // },
+
+
+            //-------------------On Country slection ----------------------
+
+            // onCountryChange: function (oEvent)
+            // {
+            //     var sCountryId = oEvent.getSource().getSelectedKey();
+            //     var aFiltered = this.allVerticals.filter(function (v) {
+            //         return v.countryId === sCountryId;
+            //     });
+            //     var oModel = this.getView().getModel("local");
+            //     oModel.setProperty("/filteredVerticals", aFiltered);
+            //     this.byId("cbVertical").setEnabled(true);
+            // },
+            onTemplateSelection:function(oEvent)
+            {
+                var oGroup = oEvent.getSource();
+                var iIndex = oEvent.getParameter("selectedIndex");
+                if (iIndex === -1)
+                {
+                    this.selectedFileTemplate = null;
+                    return;
+                }
+                var sSelectedValue = oGroup.getButtons()[iIndex].getText();
+                this.selectedFileTemplate = sSelectedValue;
+            },
+            onDateSelection:function(oEvent)
+            {
+                var oDateValue = oEvent.getSource().getValue();
+                this.selectedDate=oDateValue;
+            },
+            //--------------------------ACTUAL VALIDATION lOGIC----------------------------------
+
             onFileChange: function (oEvent) {
                 var oFileUploader = this.byId("fileUploader");
                 this._file = oEvent.getParameter("files")[0];
@@ -27,17 +100,29 @@ sap.ui.define([
             },
             onValidate: function () {
                 var oModel = this.getOwnerComponent().getModel();
-                var excelData =
-                {
-                    "RuleFieldID": "MTSL",
-                    "TO_ITEMS": TO_ITEMS
-                }
                 var oFileUploader = this.byId("fileUploader");
                 var file = oFileUploader.getFocusDomRef().files[0];
+
+                if (!this.selectedFileTemplate) {
+                    sap.m.MessageToast.show("Please select a template first!");
+                    return;
+                }
                 if (!file) {
                     sap.m.MessageToast.show("Please select a file first!");
                     return;
                 }
+                var file1=file;
+                var oEmployeeCount = Number(this.byId("employeeCount").getValue());
+                var excelData =
+                {
+                    "RuleFieldID": "MTSL",
+                    "TemplateId": this.selectedFileTemplate,
+                    "FileName": file1.name?.toString() || "",
+                    "NoOfEmps": oEmployeeCount?.toString() || "",
+                    "CutoffDate":this.selectedDate?.toString() || "",
+                    "TO_ITEMS": TO_ITEMS
+                }
+                
                 oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
                     name: "slug",
                     value: file.name
@@ -47,6 +132,28 @@ sap.ui.define([
                     name: "x-csrf-token",
                     value: this._csrfToken
                 }));
+
+                
+                if (!oEmployeeCount)
+                {
+                    sap.m.MessageToast.show("Please enter employee count!");
+                    return;
+                }
+                if (uploadedCount === 0)
+                {
+                    sap.m.MessageToast.show("Please upload file first");
+                    return;
+                }
+                if(uploadedCount!==oEmployeeCount)
+                {
+                    sap.m.MessageBox.warning(
+                    "Data Mismatch!\n\nEntered Count: " +
+                    oEmployeeCount +
+                    "\nUploaded Records: " +
+                    uploadedCount
+                );
+                return;
+                }
 
                 // Fire upload
                 oFileUploader.upload();
@@ -77,6 +184,7 @@ sap.ui.define([
 
                 var file = oFileUploader.getFocusDomRef().files[0];
                 TO_ITEMS = [];
+                uploadedCount=0;
 
                 var oModel = this.getOwnerComponent().getModel();
                 var that = this;
@@ -111,8 +219,9 @@ sap.ui.define([
 
 
                     }
+                    uploadedCount=rowsAsArrays.length-10;
                     rowsAsArrays.forEach(row => {
-                        console.log(row);
+                        
                         var data = {
                             RuleFieldID: row[0]?.toString() || "",
                             Ha001: row[1]?.toString() || "",

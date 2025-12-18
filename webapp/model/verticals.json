@@ -1,0 +1,14 @@
+[
+  { "verticalId": "WH", "verticalName": "Wiring Harness", "countryId": "IN" },
+  { "verticalId": "HM", "verticalName": "Health and Medical", "countryId": "IN" },
+  { "verticalId": "sv", "verticalName": "Services", "countryId": "IN" },
+  { "verticalId": "PMM", "verticalName": "Precision Metals and Modules", "countryId": "IN" },
+  { "verticalId": "MPP", "verticalName": "Modules and Polymer Products", "countryId": "IN" },
+  { "verticalId": "A", "verticalName": "Aerospace", "countryId": "IN" },
+  { "verticalId": "LE", "verticalName": "Lighting and Electronics", "countryId": "IN" },
+  { "verticalId": "L", "verticalName": "Logistics", "countryId": "IN" },
+  { "verticalId": "E", "verticalName": "Elastomers", "countryId": "IN" },
+  { "verticalId": "sv", "verticalName": "Services", "countryId": "UAE" },
+  { "verticalId": "WH", "verticalName": "Wiring Harness", "countryId": "UAE" },
+  { "verticalId": "WH", "verticalName": "Wiring Harness", "countryId": "SL" }
+]

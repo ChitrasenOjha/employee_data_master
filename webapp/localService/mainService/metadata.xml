@@ -6,6 +6,10 @@
 <PropertyRef Name="RuleFieldID"/>
 </Key>
 <Property Name="RuleFieldID" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="TemplateId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="FileName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="NoOfEmps" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="CutoffDate" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <NavigationProperty Name="TO_ITEMS" Relationship="ZR_VALIDATION_SF_SRV.ass_emp_header_item" FromRole="FromRole_ass_emp_header_item" ToRole="ToRole_ass_emp_header_item"/>
 </EntityType>
 <EntityType Name="zemp_item" sap:content-version="1">
@@ -123,6 +127,13 @@
 <Property Name="Jc044" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="REMARKS" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
+<EntityType Name="zemp_drop" sap:content-version="1">
+<Key>
+<PropertyRef Name="TemplateId"/>
+</Key>
+<Property Name="TemplateId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="TemplateDesc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+</EntityType>
 <Association Name="ass_emp_header_item" sap:content-version="1">
 <End Type="ZR_VALIDATION_SF_SRV.zemp_header" Multiplicity="1" Role="FromRole_ass_emp_header_item"/>
 <End Type="ZR_VALIDATION_SF_SRV.zemp_item" Multiplicity="*" Role="ToRole_ass_emp_header_item"/>
@@ -138,6 +149,7 @@
 <EntityContainer Name="ZR_VALIDATION_SF_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
 <EntitySet Name="zemp_headerSet" EntityType="ZR_VALIDATION_SF_SRV.zemp_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <EntitySet Name="zemp_itemSet" EntityType="ZR_VALIDATION_SF_SRV.zemp_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+<EntitySet Name="zemp_dropSet" EntityType="ZR_VALIDATION_SF_SRV.zemp_drop" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
 <AssociationSet Name="ass_emp_header_itemSet" Association="ZR_VALIDATION_SF_SRV.ass_emp_header_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
 <End EntitySet="zemp_headerSet" Role="FromRole_ass_emp_header_item"/>
 <End EntitySet="zemp_itemSet" Role="ToRole_ass_emp_header_item"/>
@@ -148,3 +160,4 @@
 </Schema>
 </edmx:DataServices>
 </edmx:Edmx>
+ 
