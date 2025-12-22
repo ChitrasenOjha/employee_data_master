@@ -33,7 +33,7 @@
                 </RadioButtonGroup>
 
                 <Label id="_IDGenLabel1" text="Employee Count" />
-                <Input id="employeeCount" placeholder="Enter No.of Employees" type="Number" />
+                <Input id="employeeCount" placeholder="Enter No.of Employees" type="Number" liveChange="onEmployeeCountChange" />
 
                 <Label id="_IDGenLabel2" text="Cut-off Date" />
                 <DatePicker 
@@ -60,7 +60,8 @@
                     text="Validate"
                     type="Emphasized"
                     press="onValidate"
-                    class="sapUiTinyMarginEnd" />
+                    class="sapUiTinyMarginEnd"
+                    enabled="false"/>
                 <Button id="_IDGenButton2"
                     text="Clear"
                     type="Reject"

@@ -95,37 +95,37 @@
 <Property Name="Db008" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Db009" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 <Property Name="Db007" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Db011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc032" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc031" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc005" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc015" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc025" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc043" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc021" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc035" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc054" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc061" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc006" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc012" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc036" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc045" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc003" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc008" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc004" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc030" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc013" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc029" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc007" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc047" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc027" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc019" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc049" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc051" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc056" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="Jc044" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
-<Property Name="REMARKS" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Db011" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc032" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc031" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc005" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc015" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc025" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc043" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc021" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc011" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc035" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc054" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc061" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc006" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc012" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc036" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc045" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc003" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc008" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc004" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc030" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc013" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc029" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc007" Type="Edm.String" Nullable="false" MaxLength="400" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc047" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc027" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc019" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc049" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc051" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc056" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="Jc044" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+<Property Name="REMARKS" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
 </EntityType>
 <EntityType Name="zemp_drop" sap:content-version="1">
 <Key>

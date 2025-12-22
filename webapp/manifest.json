@@ -21,7 +21,22 @@
         "type": "OData",
         "settings": {
           "annotations": [],
-          "localUri": "localService/mainService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      },
+      "employeeCsfData": {
+        "uri": "/sap/opu/odata/sap/ZR_VALIDATION_SF_CSF_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "odataVersion": "2.0"
+        }
+      },
+      "employeeCompData": {
+        "uri": "/sap/opu/odata/sap/ZR_VALIDATION_SF_COMP_SRV/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
           "odataVersion": "2.0"
         }
       }
@@ -67,6 +82,20 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "csfModel": {
+        "dataSource": "employeeCsfData",
+        "preload": false,
+        "settings": {
+          "useBatch": false
+        }
+      },
+      "compModel": {
+        "dataSource": "employeeCompData",
+        "preload": false,
+        "settings": {
+          "useBatch": false
+        }
       }
     },
     "resources": {
