@@ -6,7 +6,7 @@
     "metadataFilename": "",
     "serviceUrl": "http://mgcdlapp001:8000/sap/opu/odata/sap/ZR_VALIDATION_SF_SRV",
     "appName": "employee_data_master",
-    "appTitle": "Employee Master Data validation",
+    "appTitle": "Employee Master Data Validation",
     "appDescription": "An SAP Fiori application.",
     "appNamespace": "",
     "ui5Theme": "sap_fiori_3",

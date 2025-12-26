@@ -9,7 +9,7 @@
 |**Service Type**<br>SAP System (ABAP On-Premise)|
 |**Service URL**<br>http://mgcdlapp001:8000/sap/opu/odata/sap/ZR_VALIDATION_SF_SRV|
 |**Module Name**<br>employee_data_master|
-|**Application Title**<br>Employee Master Data validation|
+|**Application Title**<br>Employee Master Data Validation|
 |**Namespace**<br>|
 |**UI5 Theme**<br>sap_fiori_3|
 |**UI5 Version**<br>1.84.18|

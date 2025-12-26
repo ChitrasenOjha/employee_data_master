@@ -87,14 +87,14 @@
         "dataSource": "employeeCsfData",
         "preload": false,
         "settings": {
-          "useBatch": false
+          "useBatch": true
         }
       },
       "compModel": {
         "dataSource": "employeeCompData",
         "preload": false,
         "settings": {
-          "useBatch": false
+          "useBatch": true
         }
       }
     },
