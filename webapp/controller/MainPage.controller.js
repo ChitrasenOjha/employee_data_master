@@ -613,6 +613,7 @@ sap.ui.define([
                 if (!file) {
                     return;
                 }
+                sap.ui.core.BusyIndicator.show(0);
                 TO_ITEMS = [];
                 uploadedCount = 0;
                 var reader = new FileReader();
@@ -632,10 +633,12 @@ sap.ui.define([
                     if (aSheets.length === 1)
                     {
                         this.processSelectedSheet(aSheets[0].sheetName);
+                        sap.ui.core.BusyIndicator.hide();
                     }
                     else
                     {
                         this.openSheetDialog();
+                        sap.ui.core.BusyIndicator.hide();
                     }
                 }.bind(this);
                 reader.readAsArrayBuffer(file);
@@ -654,13 +657,14 @@ sap.ui.define([
 
             onSheetCancel: function () {
                 this.oSheetDialog.close();
+                this._resetFileSelection();
             },
 
             onSheetConfirm: function () {
                 var oModel = this.getView().getModel("sheetModel");
                 var selectedSheet = oModel.getProperty("/selectedSheet");
                 if (!selectedSheet) {
-                    sap.m.MessageToast.show("Please select a sheet");
+                    sap.m.MessageToast.show("Please select a sheet!");
                     return;
                 }
                 this.oSheetDialog.close();
@@ -693,7 +697,7 @@ sap.ui.define([
                         "Incorrect File Template! Please upload correct template."
                     );
                     isTemplateValid = false;
-                    that.checkEnableValidateButton();
+                    that._resetFileSelection();
                     return;
                 }
                 isTemplateValid = true;
@@ -782,7 +786,7 @@ sap.ui.define([
                 var oFU = this.byId("fileUploader");
                 var file = oFU.getFocusDomRef().files[0];
                 if (file === undefined) {
-                    MessageToast.show("No File selected!");
+                    MessageToast.show("No file selected!");
                     return;
                 }
                 oFU.clear();
