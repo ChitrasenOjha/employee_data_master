@@ -67,6 +67,7 @@
         "sap.ui.core": {}
       }
     },
+    
     "contentDensities": {
       "compact": true,
       "cozy": true

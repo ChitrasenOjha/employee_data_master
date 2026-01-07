@@ -12,29 +12,12 @@ sap.ui.define([
         var employeeCount = 0;
         var isTemplateValid = true;
         return Controller.extend("employeedatamaster.controller.MainPage", {
-            onInit: function () {
-
+            onInit: function ()
+            {
                 isTemplateValid = true;
                 console.log(this.getOwnerComponent().getModel());
                 console.log(this.getOwnerComponent().getModel("csfModel"));
                 console.log(this.getOwnerComponent().getModel("compModel"));
-
-                //-----------Combox logic----------
-
-                // Promise.all([
-                //     this.loadJSON("/model/countries.json"),
-                //     this.loadJSON("/model/verticals.json")
-                // ]).then(function (aData) {
-                //     this.allVerticals = aData[1];
-                //     var oModel = new sap.ui.model.json.JSONModel({
-                //         countries: aData[0],
-                //         filteredVerticals: []
-                //     });
-                //     this.getView().setModel(oModel, "local");
-
-                // }.bind(this)).catch(function (err) {
-                //     console.error("Error loading JSON:", err);
-                // });
 
                 //CSRF Token logic
 
@@ -48,75 +31,85 @@ sap.ui.define([
                     console.log("CSRF Token:", this._csrfToken);
 
                 }).catch(err => console.error("CSRF fetch failed", err));
+
+
+                //-----------Combox logic----------
+
+                /*
+                Promise.all([
+                    this.loadJSON("/model/countries.json"),
+                    this.loadJSON("/model/verticals.json")
+                ]).then(function (aData) {
+                    this.allVerticals = aData[1];
+                    var oModel = new sap.ui.model.json.JSONModel({
+                        countries: aData[0],
+                        filteredVerticals: []
+                    });
+                    this.getView().setModel(oModel, "local");
+
+                }.bind(this)).catch(function (err) {
+                    console.error("Error loading JSON:", err);
+                });
+                */
             },
 
             //-------------JSON Loader Helper---------------
 
-            // loadJSON: function (sPath)
-            // {
-            //     return new Promise(function (resolve, reject) {
-            //         var oModel = new sap.ui.model.json.JSONModel();
-            //         oModel.attachRequestCompleted(function () {
-            //             resolve(oModel.getData());
-            //         });
-            //         oModel.attachRequestFailed(function () {
-            //             reject("Failed to load: " + sPath);
-            //         });
-            //         oModel.loadData(sPath);
-            //     });
-            // },
+            /*
+            loadJSON: function (sPath)
+            {
+                return new Promise(function (resolve, reject) {
+                    var oModel = new sap.ui.model.json.JSONModel();
+                    oModel.attachRequestCompleted(function () {
+                        resolve(oModel.getData());
+                    });
+                    oModel.attachRequestFailed(function () {
+                        reject("Failed to load: " + sPath);
+                    });
+                    oModel.loadData(sPath);
+                });
+            },
+            */
 
 
             //-------------------On Country slection ----------------------
 
-            // onCountryChange: function (oEvent)
-            // {
-            //     var sCountryId = oEvent.getSource().getSelectedKey();
-            //     var aFiltered = this.allVerticals.filter(function (v) {
-            //         return v.countryId === sCountryId;
-            //     });
-            //     var oModel = this.getView().getModel("local");
-            //     oModel.setProperty("/filteredVerticals", aFiltered);
-            //     this.byId("cbVertical").setEnabled(true);
-            // },
-            _resetFileSelection: function () {
-                var oFU = this.byId("fileUploader");
-
-                // Clear FileUploader UI
-                oFU.clear();
-                if (oFU._oFileUpload) {
-                    oFU._oFileUpload.value = "";
-                }
-
-                // Reset related state
-                this._file = null;
-                TO_ITEMS = [];
-                uploadedCount = 0;
-                isTemplateValid = false;
-
-                this.checkEnableValidateButton();
+            /*onCountryChange: function (oEvent)
+            {
+                var sCountryId = oEvent.getSource().getSelectedKey();
+                var aFiltered = this.allVerticals.filter(function (v) {
+                    return v.countryId === sCountryId;
+                });
+                var oModel = this.getView().getModel("local");
+                oModel.setProperty("/filteredVerticals", aFiltered);
+                this.byId("cbVertical").setEnabled(true);
             },
-            onTemplateSelection: function (oEvent) {
+            */
+            
+            onTemplateSelection: function (oEvent)
+            {
                 var oGroup = oEvent.getSource();
                 var iIndex = oEvent.getParameter("selectedIndex");
-                if (iIndex === -1) {
-                    this._resetFileSelection();
+                if (iIndex === -1)
+                {
+                    this.resetFileSelection();
                     return;
                 }
-
                 var sSelectedValue = oGroup.getButtons()[iIndex].getText();
-                if (this.selectedFileTemplate !== sSelectedValue) {
+                if (this.selectedFileTemplate !== sSelectedValue)
+                {
                     this.selectedFileTemplate = sSelectedValue;
-                    this._resetFileSelection();
+                    this.resetFileSelection();
                 }
                 this.checkEnableValidateButton();
             },
 
-
-            onEmployeeCountChange: function (oEvent) {
+            onEmployeeCountChange: function (oEvent)
+            {
                 var oInput = oEvent.getSource();
                 var sValue = oInput.getValue();
-                if (!sValue) {
+                if (!sValue)
+                {
                     oInput.setValueState("Error");
                     oInput.setValueStateText("Employee count is required");
                     this.employeeCount = null;
@@ -124,25 +117,32 @@ sap.ui.define([
                     return;
                 }
                 var iCount = parseInt(sValue, 10);
-                if (isNaN(iCount) || iCount <= 0) {
+                if (isNaN(iCount) || iCount <= 0)
+                {
                     oInput.setValueState("Error");
                     oInput.setValueStateText("Employee count must be greater than 0");
                     this.employeeCount = null;
                     this.checkEnableValidateButton();
                 }
-                else {
+                else
+                {
                     oInput.setValueState("None");
                     this.employeeCount = iCount;
                     this.checkEnableValidateButton();
                 }
             },
-            onDateSelection: function (oEvent) {
+
+            onDateSelection: function (oEvent)
+            {
                 var oDateValue = oEvent.getSource().getValue();
                 this.selectedDate = oDateValue;
                 this.checkEnableValidateButton();
             },
 
-            onFileChange: function (oEvent) {
+            //Not Triggering at any moment.!
+            //We can remove if needed.
+            onFileChange: function (oEvent)
+            {
                 var oFileUploader = this.byId("fileUploader");
                 this._file = oEvent.getParameter("files")[0];
                 if (this._file) {
@@ -151,11 +151,12 @@ sap.ui.define([
                 }
             },
 
+//--------------------------ACTUAL VALIDATION lOGIC----------------------------------
 
-            //--------------------------ACTUAL VALIDATION lOGIC----------------------------------
-
-            _getODataModelForTemplate: function () {
-                switch (this.selectedFileTemplate) {
+            getODataModelForTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
                         console.log("Using MAIN service");
                         return this.getOwnerComponent().getModel();
@@ -174,8 +175,10 @@ sap.ui.define([
                 }
             },
 
-            _getEntitySetForTemplate: function () {
-                switch (this.selectedFileTemplate) {
+            getEntitySetForTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
                         return "/zemp_headerSet";
 
@@ -191,108 +194,23 @@ sap.ui.define([
                 }
             },
 
-            onValidate: function () {
-                var oModel = this._getODataModelForTemplate();
-                if (!oModel) {
-                    return;
-                }
-                var oFileUploader = this.byId("fileUploader");
-                var file = oFileUploader.getFocusDomRef().files[0];
-                if (!this.selectedFileTemplate) {
-                    MessageToast.show("Please select a template first!");
-                    return;
-                }
-                if (!file) {
-                    MessageToast.show("Please select a file first!");
-                    return;
-                }
-                var file1 = file;
-                var excelData =
-                {
-                    "RuleFieldID": "MTSL",
-                    "TemplateId": this.selectedFileTemplate,
-                    "FileName": file1.name?.toString() || "",
-                    "NoOfEmps": this.employeeCount?.toString() || "",
-                    "CutoffDate": this.selectedDate?.toString() || "",
-                    "TO_ITEMS": TO_ITEMS
-                }
-
-                oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
-                    name: "slug",
-                    value: file.name
-                }));
-
-                oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
-                    name: "x-csrf-token",
-                    value: this._csrfToken
-                }));
-
-
-                if (!this.employeeCount) {
-                    MessageToast.show("Please enter employee count!");
-                    return;
-                }
-                if (uploadedCount === 0) {
-                    MessageToast.show("Please upload file first");
-                    return;
-                }
-                if (uploadedCount !== this.employeeCount) {
-                    MessageBox.warning(
-                        "Data Mismatch!\n\nEntered Count: " +
-                        this.employeeCount +
-                        "\nUploaded Records: " +
-                        uploadedCount
-                    );
-                    this.resetValues();
-                    return;
-                }
-
-                // Fire upload
-                oFileUploader.upload();
-                sap.ui.core.BusyIndicator.show(0);
-                var that = this;
-                var sEntitySet = this._getEntitySetForTemplate();
-                if (!sEntitySet) {
-                    return;
-                }
-
-                oModel.create(sEntitySet, excelData, {
-                    success: function (oResponse) {
-
-                        sap.ui.core.BusyIndicator.hide();
-                        MessageToast.show("File uploaded successfully!");
-
-
-                        // that.getView().getModel("validatedData").setData(oResponse);
-                        // var data = that.getView().getModel("validatedData").getData();
-                        // console.log("Validated Data:", data);
-
-                        that.onDownloadValidatedExcel(oResponse.TO_ITEMS.results);
-                        var oFU = that.byId("fileUploader");
-                        oFU.clear();
-                        if (oFU._oFileUpload) {
-                            oFU._oFileUpload.value = "";
-                        }
-                        isTemplateValid = false;
-                        that.checkEnableValidateButton();
-                    },
-                    error: function (oError) {
-                        sap.ui.core.BusyIndicator.hide();
-                        MessageBox.error("Upload failed: " + oError.message);
-                        var oFU = that.byId("fileUploader");
-                        oFU.clear();
-                        if (oFU._oFileUpload) {
-                            oFU._oFileUpload.value = "";
-                        }
-                        isTemplateValid = false;
-                        that.checkEnableValidateButton();
-                    }
+            isRowEmpty: function (row) 
+            {
+                return row.every(function (cell) {
+                    return cell === null ||
+                        cell === undefined ||
+                        String(cell).trim() === "";
                 });
             },
-            _buildItemPayloadByTemplate: function (row) {
 
-                switch (this.selectedFileTemplate) {
-
+            buildItemPayloadByTemplate: function (row)
+            {
+                if (!row || this.isRowEmpty(row))
+                {
+                    return null;
+                }
+                switch (this.selectedFileTemplate)
+                {
                     /* ================= EMPLOYEE DATA MASTER ================= */
                     case "Employee Data Master":
                         return {
@@ -498,23 +416,26 @@ sap.ui.define([
                         return null;
                 }
             },
-            _getExpectedColumnCountByTemplate: function () {
-                switch (this.selectedFileTemplate) {
 
+            getExpectedColumnCountByTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
                         return 109;
                     case "Employee CSF Data":
                         return 66;
                     case "Employee Data Compensation":
                         return 9;
-
                     default:
                         return null;
                 }
             },
-            _getSheetRangeByTemplate: function () {
-                switch (this.selectedFileTemplate) {
 
+            getSheetRangeByTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
                         return {
                             startRow: 5,
@@ -540,40 +461,38 @@ sap.ui.define([
                         };
                 }
             },
-            _getHeaderRowIndexByTemplate: function () {
-                switch (this.selectedFileTemplate) {
 
+            getHeaderRowIndexByTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
                         return 9;
-
                     case "Employee CSF Data":
                         return 8;
-
                     case "Employee Data Compensation":
                         return 8;
-
                     default:
                         return 0;
                 }
             },
-            _getDataStartOffsetByTemplate: function () {
-                switch (this.selectedFileTemplate) {
 
+            getDataStartOffsetByTemplate: function ()
+            {
+                switch (this.selectedFileTemplate)
+                {
                     case "Employee Data Master":
-                        return 10;
-
+                        return 9;
                     case "Employee CSF Data":
                         return 9;
-
                     case "Employee Data Compensation":
                         return 9;
-
                     default:
                         return 0;
                 }
             },
+
             /*
-
             getSpecificSheet: function (data) {
                 let sheetIndex = -1;
                 if (!data) {
@@ -603,14 +522,14 @@ sap.ui.define([
                 }
                 return sheetIndex;
             },
-
-
             */
 
-            onFileUpload: function () {
+            onFileUpload: function ()
+            {
                 var oFileUploader = this.byId("fileUploader");
                 var file = oFileUploader.getFocusDomRef().files[0];
-                if (!file) {
+                if (!file)
+                {
                     return;
                 }
                 sap.ui.core.BusyIndicator.show(0);
@@ -628,7 +547,6 @@ sap.ui.define([
                         sheets: aSheets,
                         selectedSheet: ""
                     });
-
                     this.getView().setModel(oSheetModel, "sheetModel");
                     if (aSheets.length === 1)
                     {
@@ -643,9 +561,10 @@ sap.ui.define([
                 }.bind(this);
                 reader.readAsArrayBuffer(file);
             },
-
-            openSheetDialog: function () {
-                if (!this.oSheetDialog) {
+            openSheetDialog: function ()
+            {
+                if (!this.oSheetDialog)
+                {
                     this.oSheetDialog = sap.ui.xmlfragment(
                         "employeedatamaster.fragments.helper",
                         this
@@ -654,32 +573,36 @@ sap.ui.define([
                 }
                 this.oSheetDialog.open();
             },
-
-            onSheetCancel: function () {
+            onSheetCancel: function ()
+            {
                 this.oSheetDialog.close();
-                this._resetFileSelection();
+                this.resetFileSelection();
             },
 
-            onSheetConfirm: function () {
+            onSheetConfirm: function ()
+            {
                 var oModel = this.getView().getModel("sheetModel");
                 var selectedSheet = oModel.getProperty("/selectedSheet");
-                if (!selectedSheet) {
+                if (!selectedSheet)
+                {
                     sap.m.MessageToast.show("Please select a sheet!");
                     return;
                 }
                 this.oSheetDialog.close();
                 this.processSelectedSheet(selectedSheet);
             },
-            processSelectedSheet: function (selectedSheet) {
+            processSelectedSheet: function (selectedSheet)
+            {
                 var that = this;
                 var workbook = this._workbook;
                 var worksheet = workbook.Sheets[selectedSheet];
-                if (!worksheet) {
+                if (!worksheet)
+                {
                     sap.m.MessageBox.error("Selected sheet not found");
                     return;
                 }
                 var range = XLSX.utils.decode_range(worksheet["!ref"]);
-                var oRangeConfig = that._getSheetRangeByTemplate();
+                var oRangeConfig = that.getSheetRangeByTemplate();
                 range.s.r = oRangeConfig.startRow;
                 range.s.c = oRangeConfig.startCol;
                 const rowsAsArrays = XLSX.utils.sheet_to_json(worksheet, {
@@ -688,33 +611,151 @@ sap.ui.define([
                     range: range,
                     blankrows: true
                 });
-                var iHeaderRowIndex = that._getHeaderRowIndexByTemplate();
+                var iHeaderRowIndex = that.getHeaderRowIndexByTemplate();
                 const headerRow = rowsAsArrays[iHeaderRowIndex] || [];
                 const columnCount = headerRow.filter(cell => cell !== "").length;
-                var iExpectedColumns = that._getExpectedColumnCountByTemplate();
-                if (iExpectedColumns !== null && columnCount !== iExpectedColumns) {
+                var iExpectedColumns = that.getExpectedColumnCountByTemplate();
+                if (iExpectedColumns !== null && columnCount !== iExpectedColumns)
+                {
                     sap.m.MessageToast.show(
                         "Incorrect File Template! Please upload correct template."
                     );
                     isTemplateValid = false;
-                    that._resetFileSelection();
+                    that.resetFileSelection();
                     return;
                 }
                 isTemplateValid = true;
                 that.checkEnableValidateButton();
-                var iDataOffset = that._getDataStartOffsetByTemplate();
-                uploadedCount = rowsAsArrays.length - iDataOffset;
+                var iDataOffset = that.getDataStartOffsetByTemplate();
+                var count=0
+                for (var R = range.s.r; R <= range.e.r; R++)
+                {
+                    var sCellAddress = XLSX.utils.encode_cell({ r: R, c: 0 });
+                    var oCell = worksheet[sCellAddress];
+                    if (oCell && oCell.v !== undefined && oCell.v !== "")
+                    {
+                        count++;
+                    }
+                }
+                //var uploadedCount1=0;
+                uploadedCount = count-iDataOffset;
+                //uploadedCount1=rowsAsArrays.length - iDataOffset;
                 rowsAsArrays.forEach(function (row) {
-                    var itemPayload = that._buildItemPayloadByTemplate(row);
-                    if (itemPayload) {
+                    var itemPayload = that.buildItemPayloadByTemplate(row);
+                    if (itemPayload)
+                    {
                         TO_ITEMS.push(itemPayload);
                     }
                 });
             },
 
-            onDownloadValidatedExcel: function (oResponse) {
+            onValidate: function ()
+            {
+                var oModel = this.getODataModelForTemplate();
+                if (!oModel)
+                {
+                    return;
+                }
+                var oFileUploader = this.byId("fileUploader");
+                var file = oFileUploader.getFocusDomRef().files[0];
+                if (!this.selectedFileTemplate)
+                {
+                    MessageToast.show("Please select a template first!");
+                    return;
+                }
+                if (!file)
+                {
+                    MessageToast.show("Please select a file first!");
+                    return;
+                }
+                var file1 = file;
+                var excelData =
+                {
+                    "RuleFieldID": "MTSL",
+                    "TemplateId": this.selectedFileTemplate,
+                    "FileName": file1.name?.toString() || "",
+                    "NoOfEmps": this.employeeCount?.toString() || "",
+                    "CutoffDate": this.selectedDate?.toString() || "",
+                    "TO_ITEMS": TO_ITEMS
+                }
+                console.log(excelData);
+                oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
+                    name: "slug",
+                    value: file.name
+                }));
+                oFileUploader.addHeaderParameter(new sap.ui.unified.FileUploaderParameter({
+                    name: "x-csrf-token",
+                    value: this._csrfToken
+                }));
+                if (!this.employeeCount)
+                {
+                    MessageToast.show("Please enter employee count!");
+                    return;
+                }
+                if (uploadedCount === 0)
+                {
+                    MessageToast.show("Please upload file first");
+                    return;
+                }
+                if (uploadedCount !== this.employeeCount)
+                {
+                    MessageBox.warning(
+                        "Data Mismatch!\n\nEntered Count: " +
+                        this.employeeCount +
+                        "\nUploaded Records: " +
+                        uploadedCount
+                    );
+                    return;
+                }
 
-                if (!oResponse || !oResponse.length) {
+                // Fire upload
+                oFileUploader.upload();
+                sap.ui.core.BusyIndicator.show(0);
+                var that = this;
+                var sEntitySet = this.getEntitySetForTemplate();
+                if (!sEntitySet)
+                {
+                    return;
+                }
+
+                oModel.create(sEntitySet, excelData, {
+                    success: function (oResponse) {
+                        sap.ui.core.BusyIndicator.hide();
+                        MessageToast.show("File uploaded successfully!");
+
+                        // that.getView().getModel("validatedData").setData(oResponse);
+                        // var data = that.getView().getModel("validatedData").getData();
+                        // console.log("Validated Data:", data);
+
+                        that.onDownloadValidatedExcel(oResponse.TO_ITEMS.results);
+                        var oFU = that.byId("fileUploader");
+                        oFU.clear();
+                        if (oFU._oFileUpload)
+                        {
+                            oFU._oFileUpload.value = "";
+                        }
+                        isTemplateValid = false;
+                        that.checkEnableValidateButton();
+                    },
+                    error: function (oError) {
+                        sap.ui.core.BusyIndicator.hide();
+                        MessageBox.error("Upload failed: " + oError.message);
+                        var oFU = that.byId("fileUploader");
+                        oFU.clear();
+                        if (oFU._oFileUpload)
+                        {
+                            oFU._oFileUpload.value = "";
+                        }
+                        isTemplateValid = false;
+                        that.checkEnableValidateButton();
+                    }
+                });
+            },
+
+            onDownloadValidatedExcel: function (oResponse)
+            {
+                if (!oResponse || !oResponse.length)
+                {
                     MessageToast.show("Invalid file format. Please upload the correct Excel template.");
                     return;
                 }
@@ -727,13 +768,12 @@ sap.ui.define([
                 //    MessageToast.show("File is correct. All records validated successfully.");
                 //     return;
                 // }
-
                 var reorderedList = oResponse.map(function (item) {
                     var copy = Object.assign({}, item);
                     delete copy.__metadata;
-
                     var reordered = {};
-                    if (copy.REMARKS !== undefined) {
+                    if (copy.REMARKS !== undefined)
+                    {
                         reordered.REMARKS = copy.REMARKS;
                     }
                     Object.keys(copy).forEach(function (key) {
@@ -741,37 +781,46 @@ sap.ui.define([
                             reordered[key] = copy[key];
                         }
                     });
-
                     return reordered;
                 });
-
                 var worksheet = XLSX.utils.json_to_sheet(reorderedList);
                 var workbook = XLSX.utils.book_new();
                 XLSX.utils.book_append_sheet(workbook, worksheet, "Validated Data");
-
                 var excelBinary = XLSX.write(workbook, {
                     bookType: "xlsx",
                     type: "array"
                 });
-
                 var blob = new Blob([excelBinary], {
                     type: "application/octet-stream"
                 });
-
                 var url = URL.createObjectURL(blob);
                 var a = document.createElement("a");
                 a.href = url;
                 a.download = "Validated_Sheet.xlsx";
                 a.click();
                 URL.revokeObjectURL(url);
-
                 MessageToast.show("Excel downloaded successfully!");
             },
 
-            checkEnableValidateButton: function () {
+            resetFileSelection: function ()
+            {
+                var oFU = this.byId("fileUploader");
+                oFU.clear();
+                if (oFU._oFileUpload)
+                {
+                    oFU._oFileUpload.value = "";
+                }
+                this._file = null;
+                TO_ITEMS = [];
+                uploadedCount = 0;
+                isTemplateValid = false;
+                this.checkEnableValidateButton();
+            },
+
+            checkEnableValidateButton: function ()
+            {
                 var oFileUploader = this.byId("fileUploader");
                 var file = oFileUploader.getFocusDomRef().files[0];
-
                 var validateEnable = !!this.selectedFileTemplate &&
                     !!this.selectedDate &&
                     !!file &&
@@ -781,22 +830,23 @@ sap.ui.define([
 
             },
 
-            onClearPress: function () {
-
+            onClearPress: function ()
+            {
                 var oFU = this.byId("fileUploader");
                 var file = oFU.getFocusDomRef().files[0];
-                if (file === undefined) {
+                if (file === undefined)
+                {
                     MessageToast.show("No file selected!");
                     return;
                 }
                 oFU.clear();
-                if (oFU._oFileUpload) {
+                if (oFU._oFileUpload)
+                {
                     oFU._oFileUpload.value = "";
                 }
                 MessageToast.show("File selection cleared successfully!");
                 this.isTemplateValid = false;
                 this.checkEnableValidateButton();
-
             }
         });
     });

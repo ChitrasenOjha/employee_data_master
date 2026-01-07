@@ -10,7 +10,7 @@
 >
 <Page id="page" showHeader="false">
     <content>
-        <VBox id="_IDGenVBox" class="sapUiLargeMarginTop" alignItems="Center" justifyContent="Center">
+        <VBox id="_IDGenVBox" class="sapUiLargeMarginTop vBox1" alignItems="Center" justifyContent="Center">
             
             <f:SimpleForm
                 id="IDGenSimpleForm"
@@ -33,7 +33,7 @@
                 </RadioButtonGroup>
 
                 <Label id="_IDGenLabel1" text="Employee Count" />
-                <Input id="employeeCount" placeholder="Enter No.of Employees" type="Number" liveChange="onEmployeeCountChange" />
+                <Input id="employeeCount" placeholder="No.of Employees" type="Number" liveChange="onEmployeeCountChange" />
 
                 <Label id="_IDGenLabel2" text="Cut-off Date" />
                 <DatePicker 
@@ -46,16 +46,15 @@
                 <Label id="_IDGenLabel3" text="Upload File" />
                 <u:FileUploader
                     id="fileUploader"
+                    placeholder="choose..."
                     name="myFileUpload"
                     change=".onFileUpload"
                     uploadComplete=".onUploadComplete"
                     fileType="xlsx,csv"
                     buttonText="Browse"
                     width="570px" />
-                
-            </f:SimpleForm>
 
-            <HBox id="_IDGenHBox" justifyContent="Center" class="sapUiSmallMarginTop">
+                <HBox id="_IDGenHBox" justifyContent="Center" class="sapUiSmallMarginTop">
                 <Button id="_IDGenButton1"
                     text="Validate"
                     type="Emphasized"
@@ -66,7 +65,8 @@
                     text="Clear"
                     type="Reject"
                     press="onClearPress" />
-            </HBox>
+            </HBox>   
+            </f:SimpleForm>
         </VBox>
     </content>
 </Page>
