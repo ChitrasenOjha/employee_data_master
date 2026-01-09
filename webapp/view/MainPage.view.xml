@@ -11,7 +11,9 @@
 <Page id="page" showHeader="false">
     <content>
         <VBox id="_IDGenVBox" class="sapUiLargeMarginTop vBox1" alignItems="Center" justifyContent="Center">
-            
+           <!-- 
+                <Title id="_IDGenTitle" text="Data Validator"></Title> 
+           -->
             <f:SimpleForm
                 id="IDGenSimpleForm"
                 editable="true"

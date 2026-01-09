@@ -7,6 +7,7 @@ sap.ui.define([
 ],
     function (Controller, JSONModel, xlsx, MessageBox, MessageToast) {
         "use strict";
+        var username;
         var TO_ITEMS = [];
         var uploadedCount = 0;
         var employeeCount = 0;
@@ -19,8 +20,21 @@ sap.ui.define([
                 console.log(this.getOwnerComponent().getModel("csfModel"));
                 console.log(this.getOwnerComponent().getModel("compModel"));
 
-                //CSRF Token logic
+                /*
 
+                sap.ui.require(["sap/ushell/Container"], async function (Container) {
+                try {
+                    const UserInfo = await Container.getServiceAsync("UserInfo");
+                    const sUserId = UserInfo.getId();
+                    username=sUserId;
+                    console.log("Logged in User ID:", sUserId);
+                } catch (oError) {
+                    console.error("Shell container not found. Running in standalone mode?");
+                }
+            });
+            */
+
+                //CSRF Token logic
                 this._csrfToken = null;
                 fetch("/sap/opu/odata/sap/ZR_VALIDATION_SF_SRV/", {
                     method: "GET",
@@ -590,6 +604,7 @@ sap.ui.define([
                 }
                 this.oSheetDialog.close();
                 this.processSelectedSheet(selectedSheet);
+                
             },
             processSelectedSheet: function (selectedSheet)
             {
@@ -647,10 +662,29 @@ sap.ui.define([
                         TO_ITEMS.push(itemPayload);
                     }
                 });
+                MessageToast.show("File Uploaded Successfully!");
             },
-
+            /*
+            getLoggedInUserId: function ()
+            {
+                
+                    sap.ui.require(["sap/ushell/Container"], async function (Container) {
+                try {
+                    const UserInfo = await Container.getServiceAsync("UserInfo");
+                    const sUserId = UserInfo.getId();
+                    console.log("Logged in User ID:", sUserId);
+                } catch (oError) {
+                    console.error("Shell container not found. Running in standalone mode?");
+                }
+            });
+                    //console.warn("FLP not available. Using dev user.");
+                    //return "DEV_USER";
+            },
+            */
+                    
             onValidate: function ()
             {
+                //username=this.getLoggedInUserId();
                 var oModel = this.getODataModelForTemplate();
                 if (!oModel)
                 {
@@ -671,7 +705,8 @@ sap.ui.define([
                 var file1 = file;
                 var excelData =
                 {
-                    "RuleFieldID": "MTSL",
+                    //"RuleFieldID": "MTSL",
+                    "RuleFieldID": "DEV_USER",
                     "TemplateId": this.selectedFileTemplate,
                     "FileName": file1.name?.toString() || "",
                     "NoOfEmps": this.employeeCount?.toString() || "",
@@ -718,16 +753,35 @@ sap.ui.define([
                     return;
                 }
 
-                oModel.create(sEntitySet, excelData, {
+                oModel.create("/zemp_headerSet", excelData, {
                     success: function (oResponse) {
                         sap.ui.core.BusyIndicator.hide();
-                        MessageToast.show("File uploaded successfully!");
+
+                        //MessageToast.show("validating the File!");
 
                         // that.getView().getModel("validatedData").setData(oResponse);
                         // var data = that.getView().getModel("validatedData").getData();
                         // console.log("Validated Data:", data);
 
-                        that.onDownloadValidatedExcel(oResponse.TO_ITEMS.results);
+                        var dataItems=oResponse.TO_ITEMS.results;
+
+                        oModel.read("/zexcel_errorSet", {
+                            filters: [
+                                new sap.ui.model.Filter("RuleFieldID", sap.ui.model.FilterOperator.EQ, oResponse.RuleFieldID)
+                            ],
+                            success: function (oErrorResponse)
+                            {
+                                var errorLog = oErrorResponse.results || [];
+                                
+                                that.onDownloadValidatedExcel(dataItems, errorLog);
+                            },
+                            error: function (oError) {
+                                MessageBox.error("Failed to fetch Error Log");
+                                that.onDownloadValidatedExcel(dataItems, []);
+                            }
+                        });
+
+                        //that.onDownloadValidatedExcel(dataItems,oResponse.TO_EXCEL.results);
                         var oFU = that.byId("fileUploader");
                         oFU.clear();
                         if (oFU._oFileUpload)
@@ -736,6 +790,7 @@ sap.ui.define([
                         }
                         isTemplateValid = false;
                         that.checkEnableValidateButton();
+
                     },
                     error: function (oError) {
                         sap.ui.core.BusyIndicator.hide();
@@ -752,11 +807,11 @@ sap.ui.define([
                 });
             },
 
-            onDownloadValidatedExcel: function (oResponse)
+            onDownloadValidatedExcel: function (oResponseItems,oResponseErrors)
             {
-                if (!oResponse || !oResponse.length)
+                if (!oResponseItems || !oResponseItems.length)
                 {
-                    MessageToast.show("Invalid file format. Please upload the correct Excel template.");
+                    MessageToast.show("No Data Available to Download.");
                     return;
                 }
 
@@ -768,7 +823,7 @@ sap.ui.define([
                 //    MessageToast.show("File is correct. All records validated successfully.");
                 //     return;
                 // }
-                var reorderedList = oResponse.map(function (item) {
+                var reorderedList = oResponseItems.map(function (item) {
                     var copy = Object.assign({}, item);
                     delete copy.__metadata;
                     var reordered = {};
@@ -783,9 +838,27 @@ sap.ui.define([
                     });
                     return reordered;
                 });
-                var worksheet = XLSX.utils.json_to_sheet(reorderedList);
+                var worksheet1 = XLSX.utils.json_to_sheet(reorderedList);
+
+                 var errorData = [];
+                if (oResponseErrors && oResponseErrors.length)
+                {
+                    errorData = oResponseErrors.map(function (item) {
+                        var copy = Object.assign({}, item);
+                        delete copy.__metadata;
+                        delete copy.RuleFieldID;
+                        return copy;
+                    });
+                }
+                if (!errorData || errorData.length === 0)
+                {
+                    errorData.push({ Message: "No Errors Found!" });
+                }
+
+                var worksheet2=XLSX.utils.json_to_sheet(errorData);
                 var workbook = XLSX.utils.book_new();
-                XLSX.utils.book_append_sheet(workbook, worksheet, "Validated Data");
+                XLSX.utils.book_append_sheet(workbook, worksheet1, "Data");
+                XLSX.utils.book_append_sheet(workbook, worksheet2, "Error Log");
                 var excelBinary = XLSX.write(workbook, {
                     bookType: "xlsx",
                     type: "array"

@@ -39,4 +39,12 @@ server:
             metadataPath: ./webapp/localService/mainService/metadata.xml
             mockdataPath: ./webapp/localService/mainService/data
             generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZR_VALIDATION_SF_CSF_SRV
+            metadataPath: ./webapp/localService/employeeCsfData/metadata.xml
+            mockdataPath: ./webapp/localService/employeeCsfData/data
+            generateMockData: true
+          - urlPath: /sap/opu/odata/sap/ZR_VALIDATION_SF_COMP_SRV
+            metadataPath: ./webapp/localService/employeeCompData/metadata.xml
+            mockdataPath: ./webapp/localService/employeeCompData/data
+            generateMockData: true
         annotations: []

@@ -21,6 +21,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],
+          "localUri": "localService/mainService/metadata.xml",
           "odataVersion": "2.0"
         }
       },
@@ -29,6 +30,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],
+          "localUri": "localService/employeeCsfData/metadata.xml",
           "odataVersion": "2.0"
         }
       },
@@ -37,6 +39,7 @@
         "type": "OData",
         "settings": {
           "annotations": [],
+          "localUri": "localService/employeeCompData/metadata.xml",
           "odataVersion": "2.0"
         }
       }
@@ -67,7 +70,6 @@
         "sap.ui.core": {}
       }
     },
-    
     "contentDensities": {
       "compact": true,
       "cozy": true
@@ -97,6 +99,16 @@
         "settings": {
           "useBatch": true
         }
+      },
+      "employeeCsfData": {
+        "dataSource": "employeeCsfData",
+        "preload": true,
+        "settings": {}
+      },
+      "employeeCompData": {
+        "dataSource": "employeeCompData",
+        "preload": true,
+        "settings": {}
       }
     },
     "resources": {

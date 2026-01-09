@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZR_VALIDATION_SF_CSF_SRV" xml:lang="en" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="zemp_header" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RuleFieldID"/>
+                </Key>
+                <Property Name="RuleFieldID" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TemplateId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FileName" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NoOfEmps" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CutoffDate" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="TO_ITEMS" Relationship="ZR_VALIDATION_SF_CSF_SRV.ass_emp_header_item" FromRole="FromRole_ass_emp_header_item" ToRole="ToRole_ass_emp_header_item"/>
+            </EntityType>
+            <EntityType Name="zemp_item" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="RuleFieldID"/>
+                </Key>
+                <Property Name="RuleFieldID" Type="Edm.String" Nullable="false" MaxLength="200" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ha001" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi001" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi002" Type="Edm.String" Nullable="false" MaxLength="150" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi003" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi004" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi005" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi006" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi007" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi008" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi009" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi010" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Pi012" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad001" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad003" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad004" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad005" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad006" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad007" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad008" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad009" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad002" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad010" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad012" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad013" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad014" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad015" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ad016" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji023" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji024" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji025" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji026" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji001" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji002" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji022" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji003" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji004" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji005" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji006" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji007" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji008" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji009" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji010" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji012" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji013" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji014" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji015" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji016" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji017" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji018" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji019" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji020" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Ji021" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py001" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py002" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py003" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py004" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py005" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py006" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py007" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py009" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py010" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Py011" Type="Edm.String" Nullable="false" MaxLength="100" sap:unicode="false" sap:label="Character 100" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="REMARKS" Type="Edm.String" Nullable="false" MaxLength="500" sap:unicode="false" sap:label="Text (200 char)" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="zemp_drop" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="TemplateId"/>
+                    <PropertyRef Name="TemplateDesc"/>
+                </Key>
+                <Property Name="TemplateId" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TemplateDesc" Type="Edm.String" Nullable="false" sap:unicode="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="ass_emp_header_item" sap:content-version="1">
+                <End Type="ZR_VALIDATION_SF_CSF_SRV.zemp_header" Multiplicity="1" Role="FromRole_ass_emp_header_item"/>
+                <End Type="ZR_VALIDATION_SF_CSF_SRV.zemp_item" Multiplicity="*" Role="ToRole_ass_emp_header_item"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_ass_emp_header_item">
+                        <PropertyRef Name="RuleFieldID"/>
+                    </Principal>
+                    <Dependent Role="ToRole_ass_emp_header_item">
+                        <PropertyRef Name="RuleFieldID"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZR_VALIDATION_SF_CSF_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="zemp_headerSet" EntityType="ZR_VALIDATION_SF_CSF_SRV.zemp_header" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="zemp_itemSet" EntityType="ZR_VALIDATION_SF_CSF_SRV.zemp_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="zemp_dropSet" EntityType="ZR_VALIDATION_SF_CSF_SRV.zemp_drop" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="ass_emp_header_itemSet" Association="ZR_VALIDATION_SF_CSF_SRV.ass_emp_header_item" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="zemp_headerSet" Role="FromRole_ass_emp_header_item"/>
+                    <End EntitySet="zemp_itemSet" Role="ToRole_ass_emp_header_item"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://mgcdlapp001:8000/sap/opu/odata/sap/ZR_VALIDATION_SF_CSF_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://mgcdlapp001:8000/sap/opu/odata/sap/ZR_VALIDATION_SF_CSF_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>
