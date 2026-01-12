@@ -706,7 +706,7 @@ sap.ui.define([
                 var excelData =
                 {
                     //"RuleFieldID": "MTSL",
-                    "RuleFieldID": "DEV_USER",
+                    "RuleFieldID": "",
                     "TemplateId": this.selectedFileTemplate,
                     "FileName": file1.name?.toString() || "",
                     "NoOfEmps": this.employeeCount?.toString() || "",
@@ -766,9 +766,9 @@ sap.ui.define([
                         var dataItems=oResponse.TO_ITEMS.results;
 
                         oModel.read("/zexcel_errorSet", {
-                            filters: [
-                                new sap.ui.model.Filter("RuleFieldID", sap.ui.model.FilterOperator.EQ, oResponse.RuleFieldID)
-                            ],
+                            // filters: [
+                            //     new sap.ui.model.Filter("RuleFieldID", sap.ui.model.FilterOperator.EQ, oResponse.RuleFieldID)
+                            // ],
                             success: function (oErrorResponse)
                             {
                                 var errorLog = oErrorResponse.results || [];
